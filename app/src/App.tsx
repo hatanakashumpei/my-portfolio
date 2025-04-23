@@ -20,7 +20,7 @@ const App: React.FC = () => {
     awards: useRef<HTMLDivElement>(null),
     experience: useRef<HTMLDivElement>(null),
     skills: useRef<HTMLDivElement>(null),
-    sides: useRef<HTMLDivElement>(null),
+    slides: useRef<HTMLDivElement>(null),
     certifications: useRef<HTMLDivElement>(null),
     portfolio: useRef<HTMLDivElement>(null),
     blog: useRef<HTMLDivElement>(null),
@@ -40,7 +40,7 @@ const App: React.FC = () => {
         <div ref={refs.awards}><Awards /></div>
         <div ref={refs.experience}><Experience /></div>
         <div ref={refs.skills}><Skills /></div>
-        <div ref={refs.sides}><Slides /></div>
+        <div ref={refs.slides}><Slides /></div>
         <div ref={refs.certifications}><Certifications /></div>
         <div ref={refs.portfolio}><Portfolio /></div>
         <div ref={refs.blog}><Blog /></div>
