@@ -6,11 +6,19 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // ページトップにスムーズスクロール
+    };
+
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" className="navbar">
             <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                    My Professional Portfolio
+                <Typography
+                    variant="h6"
+                    sx={{ flexGrow: 1, cursor: 'pointer' }} // カーソルをクリック可能に変更
+                    onClick={scrollToTop} // 名前クリックでトップに移動
+                >
+                    Shumpei, Hatanaka
                 </Typography>
                 <Button color="inherit" onClick={() => scrollToSection('biography')}>Biography</Button>
                 <Button color="inherit" onClick={() => scrollToSection('publications')}>Publications</Button>

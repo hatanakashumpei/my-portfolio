@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Container } from '@mui/material';
 import Navbar from './components/Navbar';
 import Biography from './sections/Biography';
@@ -11,7 +11,8 @@ import Certifications from './sections/Certifications';
 import Portfolio from './sections/Portfolio';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
-import ScrollToTop from './components/ScrollToTop'; // スクロールボタンをインポート
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   const refs = {
@@ -27,8 +28,19 @@ const App: React.FC = () => {
     contact: useRef<HTMLDivElement>(null),
   };
 
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useEffect(() => {
+    // ヘッダーの高さを動的に取得
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      setNavbarHeight(navbar.getBoundingClientRect().height);
+    }
+  }, []);
+
   const scrollToSection = (section: keyof typeof refs) => {
-    refs[section].current?.scrollIntoView({ behavior: 'smooth' });
+    const offsetTop = refs[section].current?.offsetTop || 0;
+    window.scrollTo({ top: offsetTop - navbarHeight, behavior: 'smooth' });
   };
 
   return (
@@ -46,8 +58,8 @@ const App: React.FC = () => {
         <div ref={refs.blog}><Blog /></div>
         <div ref={refs.contact}><Contact /></div>
       </Container>
-
-      <ScrollToTop /> {/* スクロールトップボタンを追加 */}
+      <ScrollToTop />
+      <Footer />
     </>
   );
 };
