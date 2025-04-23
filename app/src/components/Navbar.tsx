@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 
 interface NavbarProps {
-    scrollToSection: (section: string) => void;
+    scrollToSection: (section: "biography" | "publications" | "awards" | "experience" | "skills" | "slides" | "certifications" | "portfolio" | "blog" | "contact") => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
                 <Button color="inherit" onClick={() => scrollToSection('awards')}>Awards</Button>
                 <Button color="inherit" onClick={() => scrollToSection('experience')}>Experience</Button>
                 <Button color="inherit" onClick={() => scrollToSection('skills')}>Skills</Button>
-                <Button color="inherit" onClick={() => scrollToSection('sides')}>Sides</Button>
+                <Button color="inherit" onClick={() => scrollToSection('slides')}>Slides</Button>
                 <Button color="inherit" onClick={() => scrollToSection('certifications')}>Certifications</Button>
                 <Button color="inherit" onClick={() => scrollToSection('portfolio')}>Portfolio</Button>
                 <Button color="inherit" onClick={() => scrollToSection('blog')}>Blog</Button>

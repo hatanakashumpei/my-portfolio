@@ -11,6 +11,7 @@ import Certifications from './sections/Certifications';
 import Portfolio from './sections/Portfolio';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
+import ScrollToTop from './components/ScrollToTop'; // スクロールボタンをインポート
 
 const App: React.FC = () => {
   const refs = {
@@ -45,6 +46,8 @@ const App: React.FC = () => {
         <div ref={refs.blog}><Blog /></div>
         <div ref={refs.contact}><Contact /></div>
       </Container>
+
+      <ScrollToTop /> {/* スクロールトップボタンを追加 */}
     </>
   );
 };
