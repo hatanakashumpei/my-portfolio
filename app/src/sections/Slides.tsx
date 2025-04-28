@@ -6,7 +6,7 @@ const Slides: React.FC = () => {
     <Container sx={{ paddingY: '40px' }}>
       <Paper elevation={3} sx={{ padding: '20px' }}>
         <Typography variant="h4" gutterBottom>
-          Side Projects & Hobbies
+          Slide Projects
         </Typography>
         <Typography variant="body1">
           - Built a weather forecasting app using OpenWeatherMap API and React.<br />

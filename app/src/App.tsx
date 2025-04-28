@@ -3,8 +3,6 @@ import { Container } from '@mui/material';
 import Navbar from './components/Navbar';
 import Biography from './sections/Biography';
 import Publications from './sections/Publications';
-import Awards from './sections/Awards';
-import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Slides from './sections/Slides';
 import Certifications from './sections/Certifications';
@@ -48,9 +46,7 @@ const App: React.FC = () => {
       <Navbar scrollToSection={scrollToSection} />
       <Container sx={{ marginTop: '80px' }}>
         <div ref={refs.biography}><Biography /></div>
-        <div ref={refs.publications}><Publications /></div>
-        <div ref={refs.awards}><Awards /></div>
-        <div ref={refs.experience}><Experience /></div>
+        <div ref={refs.awards}><Publications /></div>
         <div ref={refs.skills}><Skills /></div>
         <div ref={refs.slides}><Slides /></div>
         <div ref={refs.certifications}><Certifications /></div>
@@ -58,9 +54,10 @@ const App: React.FC = () => {
         <div ref={refs.blog}><Blog /></div>
         <div ref={refs.contact}><Contact /></div>
       </Container>
-      <ScrollToTop />
       <Footer />
+      <ScrollToTop />
     </>
+
   );
 };
 

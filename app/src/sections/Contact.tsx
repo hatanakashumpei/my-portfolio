@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
+import { Container, Typography, TextField, Button, Paper } from '@mui/material';
 
 const Contact: React.FC = () => {
   const [name, setName] = useState('');
@@ -15,50 +15,52 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Contact Me
-      </Typography>
-      <form style={{ marginTop: '20px' }}>
-        <TextField
-          label="Your Name"
-          fullWidth
-          margin="normal"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <TextField
-          label="Your Email"
-          fullWidth
-          margin="normal"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          label="Subject"
-          fullWidth
-          margin="normal"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-        />
-        <TextField
-          label="Your Message"
-          fullWidth
-          multiline
-          rows={4}
-          margin="normal"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ marginTop: '10px' }}
-          onClick={handleSendEmail}
-        >
-          Send Message
-        </Button>
-      </form>
+    <Container sx={{ paddingY: '40px' }}>
+      <Paper elevation={3} sx={{ padding: '20px' }}>
+        <Typography variant="h4" gutterBottom>
+          Contact Me
+        </Typography>
+        <form style={{ marginTop: '20px' }}>
+          <TextField
+            label="Your Name"
+            fullWidth
+            margin="normal"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            label="Your Email"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="Subject"
+            fullWidth
+            margin="normal"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+          />
+          <TextField
+            label="Your Message"
+            fullWidth
+            multiline
+            rows={4}
+            margin="normal"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ marginTop: '10px' }}
+            onClick={handleSendEmail}
+          >
+            Send Message
+          </Button>
+        </form>
+      </Paper>
     </Container>
   );
 };
