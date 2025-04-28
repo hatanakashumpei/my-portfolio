@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ListItemButton from '@mui/material/ListItemButton';
 
 interface NavbarProps {
-    scrollToSection: (section: "biography" | "awards" | "experience" | "skills" | "slides" | "certifications" | "blog" | "contact") => void;
+    scrollToSection: (section: "biography" | "publications" | "skills" | "slides" | "certifications" | "blog" | "contact") => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
