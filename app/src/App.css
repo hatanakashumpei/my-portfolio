@@ -1,10 +1,19 @@
+/* Shared animation properties */
 .container-animation {
   opacity: 0;
-  transform: translateX(-100px); /* 初期位置: 左へスライド */
   transition: all 0.5s ease-in-out;
 }
 
-.container-animation.slide-in {
+/* 下から出現 */
+.container-animation.slide-from-bottom {
+  transform: translateY(100px); /* 初期位置: 下から */
   opacity: 1;
-  transform: translateX(0); /* 元の位置に戻る */
+  transform: translateY(0); /* 元の位置に戻る */
+}
+
+/* 上から出現 */
+.container-animation.slide-from-top {
+  transform: translateY(-100px); /* 初期位置: 上から */
+  opacity: 1;
+  transform: translateY(0); /* 元の位置に戻る */
 }

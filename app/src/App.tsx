@@ -10,7 +10,7 @@ import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import './App.css'; // アニメーション用のスタイルを定義するCSSファイルを追加
+import './App.css';
 
 const App: React.FC = () => {
   const refs = {
@@ -25,6 +25,7 @@ const App: React.FC = () => {
   };
 
   const [navbarHeight, setNavbarHeight] = useState(0);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
     const navbar = document.querySelector('.navbar');
@@ -33,15 +34,20 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // IntersectionObserverを利用したアニメーション設定
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+          // スクロール方向を判定
+          const isScrollingDown = scrollTop > lastScrollTop;
+          setLastScrollTop(scrollTop);
+
           if (entry.isIntersecting) {
-            entry.target.classList.add('slide-in');
+            entry.target.classList.add(isScrollingDown ? 'slide-from-bottom' : 'slide-from-top');
           } else {
-            entry.target.classList.remove('slide-in');
+            entry.target.classList.remove('slide-from-bottom', 'slide-from-top');
           }
         });
       },
@@ -59,24 +65,36 @@ const App: React.FC = () => {
     return () => {
       observer.disconnect();
     };
-  }, [refs]);
+  }, [refs, lastScrollTop]);
 
   const scrollToSection = (section: keyof typeof refs) => {
     const offsetTop = refs[section].current?.offsetTop || 0;
     window.scrollTo({ top: offsetTop - navbarHeight, behavior: 'smooth' });
   };
 
+  const sections = [
+    { key: 'biography', Component: Biography },
+    { key: 'publications', Component: Publications },
+    { key: 'skills', Component: Skills },
+    { key: 'slides', Component: Slides },
+    { key: 'certifications', Component: Certifications },
+    { key: 'blog', Component: Blog },
+    { key: 'contact', Component: Contact },
+  ];
+
   return (
     <>
       <Navbar scrollToSection={scrollToSection} />
       <Container sx={{ marginTop: '80px' }}>
-        <div ref={refs.biography} className="container-animation"><Biography /></div>
-        <div ref={refs.publications} className="container-animation"><Publications /></div>
-        <div ref={refs.skills} className="container-animation"><Skills /></div>
-        <div ref={refs.slides} className="container-animation"><Slides /></div>
-        <div ref={refs.certifications} className="container-animation"><Certifications /></div>
-        <div ref={refs.blog} className="container-animation"><Blog /></div>
-        <div ref={refs.contact} className="container-animation"><Contact /></div>
+        {sections.map((section) => (
+          <div
+            key={section.key}
+            ref={refs[section.key as keyof typeof refs]}
+            className="container-animation"
+          >
+            <section.Component />
+          </div>
+        ))}
       </Container>
       <Footer />
       <ScrollToTop />
