@@ -12,10 +12,9 @@ const Biography: React.FC = () => {
     <Container sx={{ paddingY: '40px' }}>
       <Paper elevation={3} sx={{ padding: '20px', marginBottom: '40px' }}>
         <Stack direction="row" spacing={4} alignItems="center">
-          {/* 左側 - アバター画像 */}
           <Avatar
             alt="Shumpei Hatanaka"
-            src="./src/assets/my_avater.jpg" // アバター画像の適切なパスを指定
+            src="/my_picture.jpg"
             sx={{ width: 200, height: 200 }}
           />
 

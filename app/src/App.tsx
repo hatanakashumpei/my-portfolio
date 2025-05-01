@@ -14,6 +14,17 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
+type Section =
+  | 'biography'
+  | 'timeline'
+  | 'publications'
+  | 'skills'
+  | 'my_works'
+  | 'jurnal_clubs'
+  | 'certifications'
+  | 'blog'
+  | 'contact';
+
 const App: React.FC = () => {
   const refs = {
     biography: useRef<HTMLDivElement>(null),
@@ -23,13 +34,11 @@ const App: React.FC = () => {
     my_works: useRef<HTMLDivElement>(null),
     jurnal_clubs: useRef<HTMLDivElement>(null),
     certifications: useRef<HTMLDivElement>(null),
-    portfolio: useRef<HTMLDivElement>(null),
     blog: useRef<HTMLDivElement>(null),
     contact: useRef<HTMLDivElement>(null),
   };
 
   const [navbarHeight, setNavbarHeight] = useState(0);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
     const navbar = document.querySelector('.navbar');
@@ -38,40 +47,7 @@ const App: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-          // スクロール方向を判定
-          const isScrollingDown = scrollTop > lastScrollTop;
-          setLastScrollTop(scrollTop);
-
-          if (entry.isIntersecting) {
-            entry.target.classList.add(isScrollingDown ? 'slide-from-bottom' : 'slide-from-top');
-          } else {
-            entry.target.classList.remove('slide-from-bottom', 'slide-from-top');
-          }
-        });
-      },
-      {
-        threshold: 0.2, // 20%が画面に入るとアニメーションをトリガー
-      }
-    );
-
-    Object.values(refs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [refs, lastScrollTop]);
-
-  const scrollToSection = (section: keyof typeof refs) => {
+  const scrollToSection = (section: Section) => {
     const offsetTop = refs[section].current?.offsetTop || 0;
     window.scrollTo({ top: offsetTop - navbarHeight, behavior: 'smooth' });
   };
@@ -93,11 +69,7 @@ const App: React.FC = () => {
       <Navbar scrollToSection={scrollToSection} />
       <Container sx={{ marginTop: '80px' }}>
         {sections.map((section) => (
-          <div
-            key={section.key}
-            ref={refs[section.key as keyof typeof refs]}
-            // className="container-animation"
-          >
+          <div key={section.key} ref={refs[section.key as Section]}>
             <section.Component />
           </div>
         ))}

@@ -1,24 +1,31 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const SpeakerDeckSlide: React.FC<{ id: string }> = ({ id }) => {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = '//speakerdeck.com/assets/embed.js';
-        script.defer = true;
-        document.body.appendChild(script);
-    }, []);
-
-    return (
-        <div
-            className="speakerdeck-embed"
-            data-id={id}
-            data-ratio="1.777"
-            style={{
-                maxWidth: '100%',
-                width: '100%',
-            }}
-        ></div>
-    );
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        paddingBottom: '56.25%', // 16:9 aspect ratio (9 ÷ 16 × 100 = 56.25%)
+        height: 0,
+        overflow: 'hidden',
+      }}
+    >
+      <iframe
+        src={`https://speakerdeck.com/player/${id}`}
+        frameBorder="0"
+        allowFullScreen
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+        }}
+      ></iframe>
+    </div>
+  );
 };
 
 export default SpeakerDeckSlide;

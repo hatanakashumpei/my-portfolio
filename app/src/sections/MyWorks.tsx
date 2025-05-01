@@ -13,7 +13,7 @@ const GroupBox = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
 }));
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
+const StyledTypography = styled(Typography)(() => ({
     overflowWrap: 'break-word', // 長い文字列の折り返しを許容
     wordBreak: 'break-word',    // 単語の途中で改行を許容
     lineHeight: 1.6,            // 読みやすい行間を設定
