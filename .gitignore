@@ -1,0 +1,36 @@
+# Node.js 関連
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Docker 関連
+*.env
+docker-compose.override.yml
+node_modules/
+
+# Vite 開発ツールのキャッシュ
+.vite
+
+# システム関連（OSごとに適宜追加）
+.DS_Store
+Thumbs.db
+
+# 編集ツール関連
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.swp
+
+# 依存関係を保存しない場合のロックファイル（選択的）
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ローカル開発環境やビルドの成果物
+dist/
+build/
+coverage/
+*.log
