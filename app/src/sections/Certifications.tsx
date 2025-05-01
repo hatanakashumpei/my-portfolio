@@ -45,13 +45,22 @@ const rows = [
   createData('2024', '12', 'AWS Certified AI Practitioner', 'AI'),
 ];
 
+// 最新順（年と月の降順）で資格を並び替え
+const sortedRows = rows.sort((a, b) => {
+  const yearDiff = parseInt(b.year) - parseInt(a.year);
+  if (yearDiff === 0) {
+    return parseInt(b.month) - parseInt(a.month);
+  }
+  return yearDiff;
+});
+
 const Certifications: React.FC = () => {
   return (
     <Container sx={{ paddingY: '40px' }}>
+      <Typography variant="h4" gutterBottom>
+        資格
+      </Typography>
       <Paper elevation={3} sx={{ padding: '20px' }}>
-        <Typography variant="h4" gutterBottom>
-          資格
-        </Typography>
         <TableContainer>
           <Table sx={{ minWidth: 700 }} aria-label="certifications table">
             <TableHead>
@@ -63,7 +72,7 @@ const Certifications: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, index) => (
+              {sortedRows.map((row, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row">
                     {row.year}
@@ -77,12 +86,12 @@ const Certifications: React.FC = () => {
                         row.category === '情報系'
                           ? 'primary'
                           : row.category === 'Cloud'
-                            ? 'success'
-                            : row.category === 'AI'
-                              ? 'secondary'
-                              : row.category === 'Statistics'
-                                ? 'warning'
-                                : 'default'
+                          ? 'success'
+                          : row.category === 'AI'
+                          ? 'secondary'
+                          : row.category === 'Statistics'
+                          ? 'warning'
+                          : 'default'
                       }
                     />
                   </StyledTableCell>

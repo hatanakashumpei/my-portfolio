@@ -1,65 +1,46 @@
-import React, { useState } from 'react';
-import { Container, Typography, TextField, Button, Paper } from '@mui/material';
+import React from 'react';
+import { Container, Typography, Box, Paper, IconButton } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Contact: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [subject, setSubject] = useState('');
-
-  const handleSendEmail = () => {
-    const mailtoLink = `mailto:hatanakapeter@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    )}`;
-    window.location.href = mailtoLink;
-  };
-
   return (
     <Container sx={{ paddingY: '40px' }}>
-      <Paper elevation={3} sx={{ padding: '20px' }}>
+      <Paper elevation={3} sx={{ padding: '20px', textAlign: 'left' }}>
         <Typography variant="h4" gutterBottom>
           Contact Me
         </Typography>
-        <form style={{ marginTop: '20px' }}>
-          <TextField
-            label="Your Name"
-            fullWidth
-            margin="normal"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            label="Your Email"
-            fullWidth
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            label="Subject"
-            fullWidth
-            margin="normal"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-          <TextField
-            label="Your Message"
-            fullWidth
-            multiline
-            rows={4}
-            margin="normal"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button
-            variant="contained"
+        <Box sx={{ display: 'flex', justifyContent: 'left', gap: '20px', marginTop: '20px' }}>
+          {/* メールアドレスアイコン */}
+          <IconButton
             color="primary"
-            sx={{ marginTop: '10px' }}
-            onClick={handleSendEmail}
+            aria-label="email"
+            href="mailto:hatanakapeter@gmail.com"
           >
-            Send Message
-          </Button>
-        </form>
+            <EmailIcon fontSize="large" />
+          </IconButton>
+          {/* GitHubアイコン */}
+          <IconButton
+            color="primary"
+            aria-label="GitHub"
+            href="https://github.com/your-github-profile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubIcon fontSize="large" />
+          </IconButton>
+          {/* LinkedInアイコン */}
+          <IconButton
+            color="primary"
+            aria-label="LinkedIn"
+            href="https://www.linkedin.com/in/your-linkedin-profile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedInIcon fontSize="large" />
+          </IconButton>
+        </Box>
       </Paper>
     </Container>
   );

@@ -18,7 +18,6 @@ const Blog: React.FC = () => {
         <Grid container spacing={2}>
           {noteArticles.map((article, index) => (
             <Grid
-              item
               size={{ xs: 12, sm: 6 }}
               key={index}
             >

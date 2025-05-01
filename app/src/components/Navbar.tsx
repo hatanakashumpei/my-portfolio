@@ -4,8 +4,21 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ListItemButton from '@mui/material/ListItemButton';
 
 interface NavbarProps {
-    scrollToSection: (section: "biography" | "publications" | "skills" | "slides" | "certifications" | "blog" | "contact") => void;
+    scrollToSection: (section: string) => void;
 }
+
+// セクション情報をオブジェクトで管理
+const sections = [
+    { id: 'biography', label: '自己紹介' },
+    { id: 'timeline', label: '略歴' },
+    { id: 'publications', label: '業績' },
+    { id: 'skills', label: 'スキル' },
+    { id: 'my_works', label: '研究内容' },
+    { id: 'jurnal_clubs', label: '輪講スライド' },
+    { id: 'certifications', label: '資格' },
+    { id: 'blog', label: 'ブログ' },
+    { id: 'contact', label: '連絡先' },
+];
 
 const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
     const [drawerOpen, setDrawerOpen] = useState(false); // メニュー開閉状態
@@ -31,28 +44,37 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
 
                 {/* 大画面用メニュー */}
                 <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                    <Button color="inherit" onClick={() => scrollToSection('biography')}>Biography</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('awards')}>Awards</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('skills')}>Skills</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('slides')}>Slides</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('certifications')}>Certifications</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('blog')}>Blog</Button>
-                    <Button color="inherit" onClick={() => scrollToSection('contact')}>Contact</Button>
+                    {sections.map((section) => (
+                        <Button
+                            key={section.id}
+                            color="inherit"
+                            onClick={() => scrollToSection(section.id)}
+                        >
+                            {section.label}
+                        </Button>
+                    ))}
                 </Box>
 
                 {/* 小画面用ハンバーガーメニュー */}
-                <IconButton color="inherit" onClick={toggleDrawer(true)} sx={{ display: { xs: 'block', sm: 'none' } }}>
+                <IconButton
+                    color="inherit"
+                    onClick={toggleDrawer(true)}
+                    sx={{ display: { xs: 'block', sm: 'none' } }}
+                >
                     <MenuIcon />
                 </IconButton>
 
                 <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
                     <List>
-                        {[
-                            'biography', 'publications', 'awards', 'experience',
-                            'skills', 'slides', 'certifications', 'portfolio', 'blog', 'contact'
-                        ].map((section) => (
-                            <ListItemButton key={section} onClick={() => { scrollToSection(section as keyof NavbarProps["scrollToSection"]); setDrawerOpen(false); }}>
-                                <ListItemText primary={section.charAt(0).toUpperCase() + section.slice(1)} />
+                        {sections.map((section) => (
+                            <ListItemButton
+                                key={section.id}
+                                onClick={() => {
+                                    scrollToSection(section.id);
+                                    setDrawerOpen(false);
+                                }}
+                            >
+                                <ListItemText primary={section.label} />
                             </ListItemButton>
                         ))}
                     </List>

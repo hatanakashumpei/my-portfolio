@@ -2,9 +2,11 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Container } from '@mui/material';
 import Navbar from './components/Navbar';
 import Biography from './sections/Biography';
+import TimelineSection from './sections/Timeline';
 import Publications from './sections/Publications';
 import Skills from './sections/Skills';
-import Slides from './sections/Slides';
+import MyWorks from './sections/MyWorks';
+import JurnalClubs from './sections/JurnalClubs';
 import Certifications from './sections/Certifications';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
@@ -15,9 +17,11 @@ import './App.css';
 const App: React.FC = () => {
   const refs = {
     biography: useRef<HTMLDivElement>(null),
+    timeline: useRef<HTMLDivElement>(null),
     publications: useRef<HTMLDivElement>(null),
     skills: useRef<HTMLDivElement>(null),
-    slides: useRef<HTMLDivElement>(null),
+    my_works: useRef<HTMLDivElement>(null),
+    jurnal_clubs: useRef<HTMLDivElement>(null),
     certifications: useRef<HTMLDivElement>(null),
     portfolio: useRef<HTMLDivElement>(null),
     blog: useRef<HTMLDivElement>(null),
@@ -74,9 +78,11 @@ const App: React.FC = () => {
 
   const sections = [
     { key: 'biography', Component: Biography },
+    { key: 'timeline', Component: TimelineSection },
     { key: 'publications', Component: Publications },
     { key: 'skills', Component: Skills },
-    { key: 'slides', Component: Slides },
+    { key: 'my_works', Component: MyWorks },
+    { key: 'jurnal_clubs', Component: JurnalClubs },
     { key: 'certifications', Component: Certifications },
     { key: 'blog', Component: Blog },
     { key: 'contact', Component: Contact },
@@ -90,7 +96,7 @@ const App: React.FC = () => {
           <div
             key={section.key}
             ref={refs[section.key as keyof typeof refs]}
-            className="container-animation"
+            // className="container-animation"
           >
             <section.Component />
           </div>
