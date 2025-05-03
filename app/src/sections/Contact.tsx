@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
           <IconButton
             color="primary"
             aria-label="GitHub"
-            href="https://github.com/your-github-profile"
+            href="https://github.com/hatanakashumpei"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
           <IconButton
             color="primary"
             aria-label="LinkedIn"
-            href="https://www.linkedin.com/in/your-linkedin-profile"
+            href="https://www.linkedin.com/in/shumpei-hatanaka"
             target="_blank"
             rel="noopener noreferrer"
           >
