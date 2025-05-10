@@ -26,7 +26,7 @@ const Biography: React.FC = () => {
         <Stack direction="row" spacing={4} alignItems="center">
           <Avatar
             alt="Shumpei Hatanaka"
-            src="/my_picture.jpg"
+            src={`${import.meta.env.BASE_URL}my_picture.jpg`}
             sx={{ width: 200, height: 200 }}
           />
 

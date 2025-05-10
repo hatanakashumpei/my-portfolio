@@ -156,8 +156,7 @@ const Skills: React.FC = () => {
               }}
             >
               <Box sx={{ width: 56, height: 56, marginRight: '20px' }}>
-                <img src={skill.icon} alt={skill.label} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-              </Box>
+                <img src={`${import.meta.env.BASE_URL}${skill.icon}`} alt={skill.label} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />              </Box>
               <Box sx={{ minWidth: 0 }}>
                 <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{skill.label}</Typography>
                 <Typography variant="body2">経験年数: {skill.experience}</Typography>
@@ -189,7 +188,7 @@ const Skills: React.FC = () => {
               }}
             >
               <Box sx={{ width: 56, height: 56, marginRight: '20px' }}>
-                <img src={skill.icon} alt={skill.label} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                <img src={`${import.meta.env.BASE_URL}${skill.icon}`} alt={skill.label} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               </Box>
               <Box sx={{ minWidth: 0 }}>
                 <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{skill.label}</Typography>
