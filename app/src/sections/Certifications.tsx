@@ -43,6 +43,7 @@ const rows = [
   createData('2024', '10', 'Google Cloud Certified - Associate Cloud Engineer', 'Cloud'),
   createData('2024', '12', '一般社団法人日本ディープラーニング協会 Generative AI Test', 'AI'),
   createData('2024', '12', 'AWS Certified AI Practitioner', 'AI'),
+  createData('2025', '4', 'Databricks Certified Data Engineer Associate', '情報系'),
 ];
 
 // 最新順（年と月の降順）で資格を並び替え

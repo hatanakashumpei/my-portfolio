@@ -1,29 +1,30 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Container } from '@mui/material';
-import Navbar from './components/Navbar';
-import Biography from './sections/Biography';
-import TimelineSection from './sections/Timeline';
-import Publications from './sections/Publications';
-import Skills from './sections/Skills';
-import MyWorks from './sections/MyWorks';
-import JurnalClubs from './sections/JurnalClubs';
-import Certifications from './sections/Certifications';
-import Blog from './sections/Blog';
-import Contact from './sections/Contact';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import './App.css';
+import React, { useRef, useEffect, useState } from "react";
+import { Container } from "@mui/material";
+import Navbar from "./components/Navbar";
+import Animation from "./components/Animation";
+import Biography from "./sections/Biography";
+import TimelineSection from "./sections/Timeline";
+import Publications from "./sections/Publications";
+import Skills from "./sections/Skills";
+import MyWorks from "./sections/MyWorks";
+import JurnalClubs from "./sections/JurnalClubs";
+import Certifications from "./sections/Certifications";
+import Blog from "./sections/Blog";
+import Contact from "./sections/Contact";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import "./App.css";
 
 type Section =
-  | 'biography'
-  | 'timeline'
-  | 'publications'
-  | 'skills'
-  | 'my_works'
-  | 'jurnal_clubs'
-  | 'certifications'
-  | 'blog'
-  | 'contact';
+  | "biography"
+  | "timeline"
+  | "publications"
+  | "skills"
+  | "my_works"
+  | "jurnal_clubs"
+  | "certifications"
+  | "blog"
+  | "contact";
 
 const App: React.FC = () => {
   const refs = {
@@ -41,7 +42,7 @@ const App: React.FC = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.querySelector(".navbar");
     if (navbar) {
       setNavbarHeight(navbar.getBoundingClientRect().height);
     }
@@ -49,31 +50,39 @@ const App: React.FC = () => {
 
   const scrollToSection = (section: Section) => {
     const offsetTop = refs[section].current?.offsetTop || 0;
-    window.scrollTo({ top: offsetTop - navbarHeight, behavior: 'smooth' });
+    window.scrollTo({ top: offsetTop - navbarHeight, behavior: "smooth" });
   };
 
   const sections = [
-    { key: 'biography', Component: Biography },
-    { key: 'timeline', Component: TimelineSection },
-    { key: 'publications', Component: Publications },
-    { key: 'skills', Component: Skills },
-    { key: 'my_works', Component: MyWorks },
-    { key: 'jurnal_clubs', Component: JurnalClubs },
-    { key: 'certifications', Component: Certifications },
-    { key: 'blog', Component: Blog },
-    { key: 'contact', Component: Contact },
+    { key: "biography", Component: Biography },
+    { key: "timeline", Component: TimelineSection },
+    { key: "publications", Component: Publications },
+    { key: "skills", Component: Skills },
+    { key: "my_works", Component: MyWorks },
+    { key: "jurnal_clubs", Component: JurnalClubs },
+    { key: "certifications", Component: Certifications },
+    { key: "blog", Component: Blog },
+    { key: "contact", Component: Contact },
   ];
 
   return (
     <>
+      {/* VANTA.NET 背景 */}
+      <Animation />
+
+      {/* ナビバー */}
       <Navbar scrollToSection={scrollToSection} />
-      <Container sx={{ marginTop: '80px' }}>
+
+      {/* メインコンテンツをオーバーレイで表示 */}
+      <Container sx={{ marginTop: "80px", position: "relative", zIndex: 1 }}>
         {sections.map((section) => (
           <div key={section.key} ref={refs[section.key as Section]}>
             <section.Component />
           </div>
         ))}
       </Container>
+
+      {/* フッター */}
       <Footer />
       <ScrollToTop />
     </>

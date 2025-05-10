@@ -1,3 +1,9 @@
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden; /* 横スクロールを防ぎつつ、縦スクロールは許可 */
+}
+
 /* Shared animation properties */
 .container-animation {
   opacity: 0;

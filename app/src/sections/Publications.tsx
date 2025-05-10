@@ -3,6 +3,20 @@ import { Container, Typography, Paper, Box, IconButton } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const Publications: React.FC = () => {
+  const formatAuthors = (authors: string) => {
+    return authors.split(', ').map((author, index) =>
+      /(S\. Hatanaka|畑中駿平)/.test(author) ? (
+        <Typography component="span" sx={{ fontWeight: 'bold', textDecoration: 'underline' }} key={index}>
+          {author}
+        </Typography>
+      ) : (
+        <Typography component="span" key={index}>
+          {author}
+        </Typography>
+      )
+    ).reduce<React.ReactNode[]>((prev, curr) => [...prev, ', ', curr], []).slice(1);
+  };
+
   const internationalPublications = [
     {
       authors: 'N. Hosomi, Y. Iioka, S. Hatanaka, T. Misu, K. Yamada, N. Tsukamoto, S. Kobayashi, and K. Sugiura',
@@ -110,7 +124,7 @@ const Publications: React.FC = () => {
 
   const patents = [
     {
-      authors: '細見直希，翠輝久，山田健太郎，畑中駿平，ヤンウェイ，杉浦孔明',
+      authors: '細見直希, 翠輝久, 山田健太郎, 畑中駿平, ヤンウェイ, 杉浦孔明',
       title: '移動体制御装置、移動体制御方法、学習装置、学習方法、生成装置、およびプログラム',
       details: '特願2023-137591（2023年8月25日出願）, 特開2024-31978（2024年3月7日公開）',
     },
@@ -130,7 +144,7 @@ const Publications: React.FC = () => {
           </Typography>
           {internationalPublications.map((pub, index) => (
             <Typography variant="body1" sx={{ marginBottom: '10px' }} key={index}>
-              {index + 1}. {pub.authors}, “{pub.title},” {pub.conference}, {pub.details}
+              {index + 1}. {formatAuthors(pub.authors)}, “{pub.title},” {pub.conference}, {pub.details}
               {pub.link && (
                 <IconButton
                   component="a"
@@ -153,7 +167,7 @@ const Publications: React.FC = () => {
           </Typography>
           {internationalConferences.map((pub, index) => (
             <Typography variant="body1" sx={{ marginBottom: '10px' }} key={index}>
-              {index + 1}. {pub.authors}, “{pub.title},” {pub.conference}, {pub.details}
+              {index + 1}. {formatAuthors(pub.authors)}, “{pub.title},” {pub.conference}, {pub.details}
               {pub.link && (
                 <IconButton
                   component="a"
@@ -176,7 +190,7 @@ const Publications: React.FC = () => {
           </Typography>
           {domesticPublications.map((pub, index) => (
             <Typography variant="body1" sx={{ marginBottom: '10px' }} key={index}>
-              {index + 1}. {pub.authors}, “{pub.title},” {pub.conference}, {pub.details}
+              {index + 1}. {formatAuthors(pub.authors)}, “{pub.title},” {pub.conference}, {pub.details}
               {pub.link && (
                 <IconButton
                   component="a"
@@ -199,7 +213,7 @@ const Publications: React.FC = () => {
           </Typography>
           {patents.map((patent, index) => (
             <Typography variant="body1" sx={{ marginBottom: '10px' }} key={index}>
-              {index + 1}. {patent.authors}, {patent.title}, {patent.details}
+              {index + 1}. {formatAuthors(patent.authors)}, {patent.title}, {patent.details}
             </Typography>
           ))}
         </Box>
