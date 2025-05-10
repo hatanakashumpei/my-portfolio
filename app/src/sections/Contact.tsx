@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
     <Container sx={{ paddingY: '40px' }}>
       <Paper elevation={3} sx={{ padding: '20px', textAlign: 'left' }}>
         <Typography variant="h4" gutterBottom>
-          Contact Me
+          連絡先
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'left', gap: '20px', marginTop: '20px' }}>
           {/* メールアドレスアイコン */}
@@ -20,16 +20,6 @@ const Contact: React.FC = () => {
           >
             <EmailIcon fontSize="large" />
           </IconButton>
-          {/* GitHubアイコン */}
-          <IconButton
-            color="primary"
-            aria-label="GitHub"
-            href="https://github.com/hatanakashumpei"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHubIcon fontSize="large" />
-          </IconButton>
           {/* LinkedInアイコン */}
           <IconButton
             color="primary"
@@ -39,6 +29,16 @@ const Contact: React.FC = () => {
             rel="noopener noreferrer"
           >
             <LinkedInIcon fontSize="large" />
+          </IconButton>
+          {/* GitHubアイコン */}
+          <IconButton
+            color="primary"
+            aria-label="GitHub"
+            href="https://github.com/hatanakashumpei"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubIcon fontSize="large" />
           </IconButton>
         </Box>
       </Paper>

@@ -16,15 +16,16 @@ import SchoolIcon from '@mui/icons-material/School';
 const TimelineSection: React.FC = () => {
     const timelineEvents = [
         {
-            year: 'B1-B4',
-            title: 'エンジニアリング',
-            description: 'バックエンドからフロントエンドまで幅広く開発を経験。',
+            year: '2018/04-2022/03',
+            title: 'B1-B4：エンジニアリング',
+            description: '学部生の頃は、バックエンドからフロントエンドまで幅広く開発を経験。',
             icon: <ComputerIcon />,
         },
         {
-            year: 'M1-M2',
-            title: 'マルチモーダルAI研究',
-            description: '参照表現セグメンテーション（RES）を専門分野として研究。',
+            year: '2022/04-2024/03',
+            title: 'M1-M2：マルチモーダルAI研究',
+            description: '大学院では、参照表現セグメンテーションを専門分野としてマルチモーダルAIを研究。\
+            また、複数社の長期インターンにてAIのモデル構築を経験。',
             icon: <SchoolIcon />,
         },
         {
@@ -39,7 +40,7 @@ const TimelineSection: React.FC = () => {
         <Container sx={{ paddingY: '40px' }}>
             <Paper elevation={3} sx={{ padding: '20px', marginBottom: '40px' }}>
                 <Typography variant="h4" gutterBottom>
-                    経歴タイムライン
+                    略歴
                 </Typography>
                 <Timeline
                     sx={{

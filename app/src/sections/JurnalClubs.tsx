@@ -1,9 +1,5 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import { Container, Typography } from '@mui/material';
+import { Grid, Paper, Box, Container, Typography, styled } from '@mui/material';
 import SpeakerDeckSlide from '../components/SpeakerDeckSlide';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,8 +24,9 @@ const JurnalClubs: React.FC = () => {
 
   return (
     <Container sx={{ paddingY: '40px' }}>
+      <Paper elevation={3} sx={{ padding: '20px' }}>
       <Typography variant="h4" gutterBottom>
-        輪講資料
+        輪講スライド
       </Typography>
       <Box sx={{ width: '100%' }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -42,6 +39,7 @@ const JurnalClubs: React.FC = () => {
           ))}
         </Grid>
       </Box>
+      </Paper>
     </Container>
   );
 };

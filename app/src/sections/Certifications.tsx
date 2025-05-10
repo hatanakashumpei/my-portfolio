@@ -58,10 +58,10 @@ const sortedRows = rows.sort((a, b) => {
 const Certifications: React.FC = () => {
   return (
     <Container sx={{ paddingY: '40px' }}>
+      <Paper elevation={3} sx={{ padding: '20px' }}>
       <Typography variant="h4" gutterBottom>
         資格
       </Typography>
-      <Paper elevation={3} sx={{ padding: '20px' }}>
         <TableContainer>
           <Table sx={{ minWidth: 700 }} aria-label="certifications table">
             <TableHead>

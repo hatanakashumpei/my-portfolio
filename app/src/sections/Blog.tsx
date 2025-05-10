@@ -13,7 +13,7 @@ const Blog: React.FC = () => {
     <Container sx={{ paddingY: '40px' }}>
       <Paper elevation={3} sx={{ padding: '20px' }}>
         <Typography variant="h4" gutterBottom>
-          Blog
+          ブログ
         </Typography>
         <Grid container spacing={2}>
           {noteArticles.map((article, index) => (
